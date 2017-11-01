@@ -1,0 +1,7 @@
+ git init
+ git remote add origin https://basingh@stash.trusted.visa.com:7990/scm/cl/automation.git
+ git pull origin master
+ git branch
+ git fetch --all
+ git checkout update_opera_scripts
+ git checkout feature/update_opera_scripts

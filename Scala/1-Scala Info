@@ -1,0 +1,92 @@
+Scala runs using a JVM and its code is compiled to bytecode
+
+The scala compiler can compile to Javascript
+
+
+Insatalling scala
+
+Path Set
+
+vim ~/.bash_profile  for mac
+source ~/.bash_profile
+
+vim ~/.bashrc for linux
+
+
+Methods are used to define object behaviour
+
+
+Chaining of functions
+
+-----------------------
+Ex:1
+
+package com.visa.scala
+
+class FunctionExample {
+  def dox(x:Int)  = x
+  def doax(x:Int) = {x}
+  def doaax(x:Int):Int = {x}
+  def doaaax(x:Int):Int = {return x}
+  def dosum (x:Int) = (y:Int) => { 
+    x+y 
+  } 
+  
+  def doaasum (x:Int) = {(y:Int) => { 
+    x+y 
+  }}
+  
+  def donsum (x:Int) (y:Int) = x+y
+  def donnsum (x:Int) (y:Int):Int = x+y
+  
+  def dozsum (x:Int) (y:Int):Int = x+y
+}
+
+object FunctionExample {
+  def main(args: Array[String]): Unit = {
+    val x = new FunctionExample()
+    println(x.dox(10))
+    
+    val sx = x.dosum(10)
+    println(sx)
+    val sy = sx(20)
+    println(sy)
+    //or
+    println(x.dosum(10)(20)) 
+    
+    //currying
+    println(x.donsum(2)(3))
+    
+     println(x.donsum(2)_)
+     println(x.donnsum(2)(3))
+     
+    println( x.dozsum{
+        println("inside first")
+        5
+     }
+     {
+        println("inside second")
+        7
+     })
+    
+    println(x.doaasum(3)(14))
+    
+  }
+}
+
+O/P:
+10
+<function1>
+30
+30
+5
+<function1>
+5
+inside first
+inside second
+12
+17
+
+
+--------------------
+

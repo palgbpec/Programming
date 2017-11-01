@@ -1,0 +1,6 @@
+
+1. Finding number of connections opened on port 80
+netstat -an | grep :80 | sort
+
+2. every 2 sec
+watch -n2 "netstat -an | grep :80"

@@ -1,0 +1,31 @@
+
+1. Array
+   a number sequence of elements fo a single type
+   do not change in size
+   
+2. slice
+   a list
+   the value of an unitialized slice is nil
+   change in size
+   have a length and a capacity
+ 
+3. map
+   key/value
+   map is unordered group of elements of one type, called the element type, indexed by a set of unique keys of another type, called the key type.
+   The value of an uninitialized map is nil
+   
+4. struct
+   a data structure
+   a composite type
+   allows us to collect properties together
+   
+
+Point To Remember : 
+1. the value of uninitialized slice and map is nil
+	
+2. slice , map, channel are reference type , they are built on top of other datastructure
+    or  they are referencing the underlying data structure
+	Slice Has a header, length, capacity
+	i.e holding the address of the underlying datastructure
+	
+

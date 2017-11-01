@@ -1,0 +1,21 @@
+
+ls -l /proc/25361/fd | grep socket | wc -l
+
+
+
+lsof -p 25361 | grep sock | head
+
+		
+		
+		
+We need the output for these commands
+1. First get the pid for opentsdb process 
+ps -aux | grep opentsdb
+
+2. Put the pid got in the step 1 result to the below command
+ls -l /proc/pid/fd | grep socket | wc -l
+
+3.Put the pid got in the step 1 in the below command
+lsof -p pid| grep sock | head
+
+

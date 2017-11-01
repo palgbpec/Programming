@@ -1,0 +1,5 @@
+jhat -J-Xmx5G dump_oce_11
+
+http://blog.tsunanet.net/2010/08/jpmp-javas-poor-mans-profiler.html
+
+http://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html

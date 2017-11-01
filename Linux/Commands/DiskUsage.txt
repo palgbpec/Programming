@@ -1,0 +1,2 @@
+
+1. du -sh /*       -- it will show the space occupied by each folder

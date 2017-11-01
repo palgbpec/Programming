@@ -1,0 +1,2 @@
+1. Memory  Information
+	# cat /proc/meminfo - [To get Memory Information]

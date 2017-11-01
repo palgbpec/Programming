@@ -1,0 +1,12 @@
+
+atom .  --> will open all the folder structure in the current location
+
+vim .atom/apmrc  --> add the following lines of code for proxy and certificate issue
+proxy = http://userproxy.xxxxx.com:80
+strict-ssl = false
+
+
+apm install go-plus    --> go-plus for Go
+apm install font-items
+
+In atom preferences you can install terminal-plus

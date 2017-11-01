@@ -1,0 +1,145 @@
+
+1. Types
+--------
+Method sets
+Boolean types
+Numeric types
+String types
+Array types
+Slice types
+Struct types
+Pointer types
+Function types
+Interface types
+Map types
+Channel types
+
+2. package main
+
+import (
+	"fmt"
+)
+
+var x int    //o/p-0
+
+u:= 1		//compiler will shout with the following error  "non-declaration statement outside function body" 
+			//So you can't delare the global variable like this, only inside the function body it is allowed
+func main() {
+	var y int   //o/p-0
+	z := 1      // o/p-1
+//	fmt.Println(x)       even if you don't print global variable x the compiler will not shout
+	fmt.Println(y)      inside the function whatever you declare you have to used else compiler will shout
+	fmt.Println(z)
+}
+
+3. var x [58] string
+We are using var all are initialized to empty strings
+
+
+4. Array
+-----------
+-----------
+   var x[50] string  ---- array
+    
+   no number var x[] string --- slice
+
+5. Iterating over array
+   arr := []int {1,2,3,4,5,}
+   for index, val := range arr {
+    //val is the value of each element one by one
+   }
+   
+   or 
+   
+   for j:=0;j<len(arr);j++ {
+		fmt.Println(arr[j])
+   }
+   
+ Slice 
+---------
+---------
+var x = []int{}
+myslice := []int {1,2,3,4,5,} 
+myslice := make([]int,3)
+myslice := make([]int, 50 , 100)
+myslice := new ([100] int)[0:50]
+
+6.
+myslice := []int {1,2,3,4,5,}                //here length and capacity is 5
+or
+myslice := make([]int,3)  //here length and capacity are same
+
+7. myslice := make([]int, 50 , 100)
+   myslice := new ([100] int)[0:50]
+   
+8. Appending one slice to another slice
+mySlice :=[]int {1,2,3,4,5}
+myOtherSlice := []int {6,7,8,9}
+mySlice = append(mySlice, myOtherSlice...)
+
+9. var student [] string --
+   fmt.Println(student == nil)   
+   if you are using var for creating slice then it will contain nil,because the underlying datastructure does not exist
+   
+   student := []string{}
+   then it contains the address of underlying datastructure , but you cannot start referencing index
+   
+10. If you try using 
+   student[0] ="bari"
+   you will get index out of range error as you have not defined the length of underlying datastructure
+   
+11. If you try with append that will be ok
+    student := [] string{}
+	student = append(student, "bari")
+	
+Map
+----
+----
+var mymap = map[string]string{"name": "bari"}
+var mymap1 = make(map[string]string)
+mymap1["name"] = "bari"
+mymap2 := map[string]string{}
+mymap2["name"] = "bari"
+mymap3 := make(map[string]string)
+mymap3["name"] = "bari"
+mymap4 := map[string]string{"name": "bari"}
+
+12. Declaring a map
+var x map[string]int
+var x = make(map[string]int)
+
+mymap := make(map[string]int)
+mymap := map[string]int {}
+
+13. Initialising a map
+mymap["k1"] = 7
+mymap["k2"] = 8
+
+or mymap := map[string]int{"foo":1,"bar":2}
+
+14. delete(mymap, "k2")
+
+15.
+map has a key string and value as map
+
+elements := map[string]map[string]string {
+	"H" : map[string]string {
+		"name" : "Hydrogen",
+		"state" : "gas",
+	},
+	"He" : map[string]string {
+		"name":"Helium",
+		"state":"gas",
+	}
+
+}
+
+16. Iterating over a map
+
+for key, val := range mymap {
+fmt.Println(key,"-",val)
+}
+Cool Stuff
+----------
+fmt.Println("myString"[2])  ---- 83  (83 corresponds to S)
+

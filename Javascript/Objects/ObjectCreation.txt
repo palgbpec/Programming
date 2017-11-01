@@ -1,0 +1,92 @@
+Javascript Object
+-----------------
+
+http://www.w3schools.com/js/js_object_definition.asp
+
+
+var person ={}
+or
+var person = {firstName: "barinder", lastName:"singh"};
+					
+					Property   PropertyValue
+var person = {
+					firstName:  "barinder", 
+					lastName:   "singh",
+					fullName:   function() {return this.firstName + "" +this.lastName;}
+			 };
+
+Property	Property Value
+firstName    barinder
+lastName     singh
+
+Accessing Object Property
+objectName.propertyName
+
+or 
+
+objectName["propertyName"]
+
+Example: person.firstName or person["firstName"]
+
+objectName.methodName()
+
+If you access the fullName property, without (), it will return the function definition:
+like this
+function () {return this.firstName + "" +this.lastName}
+
+name = person.fullName
+
+--------------------------------
+Creating a Javascript Object
+
+1. Using an Object Literal
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+2. Using the JavaScript Keyword new
+var person = new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+
+3. Using an Object Constructor
+function person(first, last, age, eye) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eye;
+}
+var myFather = new person("John", "Doe", 50, "blue");
+var myMother = new person("Sally", "Rally", 48, "green");
+
+--------------------------------------
+
+Built-in JavaScript Constructors
+
+var x1 = new Object();    // A new Object object
+var x2 = new String();    // A new String object
+var x3 = new Number();    // A new Number object
+var x4 = new Boolean()    // A new Boolean object
+var x5 = new Array();     // A new Array object
+var	x6 = new RegExp();    // A new RegExp object
+var x7 = new Function();  // A new Function object
+var x8 = new Date();      // A new Date object
+
+---------------------------------------
+
+var x1 = {};            // new object                //Important
+var x2 = "";            // new primitive string
+var x3 = 0;             // new primitive number
+var x4 = false;         // new primitive boolean
+var x5 = [];            // new array	object		//Important
+var	x6 = /()/           // new regexp object
+var x7 = function(){};  // new function object		//Important
+
+------------------------------------
+
+JavaScript Objects are Mutable
+
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}
+
+var x = person;
+x.age = 10;           // This will change both x.age and person.age

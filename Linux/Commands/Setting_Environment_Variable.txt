@@ -1,0 +1,55 @@
+System wide
+
+/etc/environment: specifically meant for environment variables
+/etc/env.d/*: environment variables, split in multiple files
+/etc/profile: all types of initialization scripts
+/etc/profile.d/*: initialization scripts
+/etc/bashrc: meant for functions and aliases
+User specific
+
+~/.bash_profile: initialization for all interactive (bash-)shells
+~/.bashrc: initialization for login (bash-)shells
+~/.profile: used for all shells
+~/.cshrc, ~/.tcshrc, ~/.zshrc, ~/.tcshrc: similar for non-bash shells
+
+
+-----------------------------------
+ln -s <original file> <link to file>
+-------------------------------------------------------------
+2. How to get full path of a file
+readlink -f /usr/bin/java
+-------------------------
+locate java | grep /bin/java
+
+--------------------------
+1.  vim .bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH
+
+
+--------------------------
+
+1. How to permanently set $PATH on Linux?
+
+
+You need to add it to your ~/.profile file.
+
+export PATH=$PATH:/path/to/dir
+Depending on what you're doing, you also may want to symlink to binaries:
+
+cd /usr/bin
+sudo ln -s /path/to/binary binary-name
+
+
+for i in `ls`; do echo "`pwd`/$i"; done
+

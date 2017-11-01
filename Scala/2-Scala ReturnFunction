@@ -1,0 +1,39 @@
+From Scala Cookbook
+https://www.safaribooksonline.com/library/view/scala-cookbook/9781449340292/ch09s08.html
+
+Creating a Function That Returns a Function
+
+Problem
+-------
+You want to return a function (algorithm) from a function or method.
+
+Solution
+--------
+Define a function that returns an algorithm (an anonymous function), assign that to a new function, and then call that new function.
+
+The following code declares an anonymous function that takes a String argument and returns a String:
+
+(s: String) => { prefix + " " + s }
+You can return that anonymous function from the body of another function as follows:
+
+def saySomething(prefix: String) = (s: String) => {
+  prefix + " " + s
+}
+Because saySomething returns a function, you can assign that resulting function to a variable. The saySomething function requires a String argument, so give it one as you create the resulting function sayHello:
+
+val sayHello = saySomething("Hello")
+The sayHello function is now equivalent to your anonymous function, with the prefix set to hello. Looking back at the anonymous function, you see that it takes a String parameter and returns a String, so you pass it a String:
+
+sayHello("Al")
+Here’s what these steps look like in the REPL:
+
+scala> def saySomething(prefix: String) = (s: String) => {
+     |   prefix + " " + s
+     | }
+saySomething: (prefix: String)String => java.lang.String
+
+scala> val sayHello = saySomething("Hello")
+sayHello: String => java.lang.String = <function1>
+
+scala> sayHello("Al")
+res0: java.lang.String = Hello Al

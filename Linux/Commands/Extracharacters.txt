@@ -1,0 +1,14 @@
+1. Removing extra characters
+i) 
+	grep -r $'\r' *
+	Use -r for recursive search and $'' for c-style escape in Bash.
+
+	More, if you are sure it's text file, then it should be safe to run
+
+ii)
+	tr -d $'\r' < filename
+	to remove all \r in a file.
+
+	If use GNU sed, -i can perform in-place edit, so you won't need to write back:
+
+iii)  sed $'s/\r//' -i filename

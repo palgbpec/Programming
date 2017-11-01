@@ -1,0 +1,15 @@
+https://helpx.adobe.com/experience-manager/kb/TakeThreadDump.html
+
+Good Information to analyze threaddumps
+https://dzone.com/articles/how-analyze-java-thread-dumps
+
+jstack 12103 >> threaddumps.log
+
+http://spotify.github.io/threaddump-analyzer/
+
+Current thread (0x0805ac88):  JavaThread "main" [_thread_in_native, id=21139]
+                    |             |         |            |          +-- ID
+                    |             |         |            +------------- state
+                    |             |         +-------------------------- name
+                    |             +------------------------------------ type
+                    +-------------------------------------------------- pointer

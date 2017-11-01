@@ -1,0 +1,11 @@
+
+GoProject										                                                                                                                                       (reponame)           (folder)
+			----> src    ----> github.com ------> <github.com username>	----> repo1 -->pkg1 -->folder1--> file1.go
+																		                    ---->  repo2 -->pkg2 -->folder2--> file.go
+			----> pkg
+			----> bin
+			
+Example: github.com/GoesToEleven/GolangTraining/02_package/main/main.go			
+	github.com/GoesToEleven(username)/GolangTraining(repo)/02_package(pkg)/main(folder)/main.go(filename)				
+Example: get get -u github.com/GoesToEleven/GolangTraining
+					

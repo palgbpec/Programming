@@ -1,0 +1,4 @@
+1. CPU Information
+    # cat /proc/cpuinfo - [To get CPU Information]
+	
+2. lscpu

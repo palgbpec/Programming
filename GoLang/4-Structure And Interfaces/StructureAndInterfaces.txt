@@ -1,0 +1,549 @@
+Pointers in C
+-------------
+
+		#include <stdio.h>
+
+		int main () {
+
+		   int  var = 20;   /* actual variable declaration */
+		   int  *ip;        /* pointer variable declaration */
+
+		   ip = &var;  /* store address of var in pointer variable*/
+
+		   printf("Address of var variable: %x\n", &var  );
+
+		   /* address stored in pointer variable */
+		   printf("Address stored in ip variable: %x\n", ip );
+
+		   /* access the value using the pointer */
+		   printf("Value of *ip variable: %d\n", *ip );
+
+		   return 0;
+		}
+
+		Address of var variable: bffd8b3c
+		Address stored in ip variable: bffd8b3c
+		Value of *ip variable: 20
+
+-----------------------------------------------------------------------
+
+Structure in C
+--------------
+---------------------------
+Accessing Structure Members
+---------------------------
+#include <stdio.h>
+#include <string.h>
+ 
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+
+int main( ) {
+
+   struct Books Book1;        /* Declare Book1 of type Book */
+   struct Books Book2;        /* Declare Book2 of type Book */
+ 
+   /* book 1 specification */
+   strcpy( Book1.title, "C Programming");
+   strcpy( Book1.author, "Nuha Ali"); 
+   strcpy( Book1.subject, "C Programming Tutorial");
+   Book1.book_id = 6495407;
+ 
+   /* print Book1 info */
+   printf( "Book 1 title : %s\n", Book1.title);
+   printf( "Book 1 author : %s\n", Book1.author);
+   printf( "Book 1 subject : %s\n", Book1.subject);
+   printf( "Book 1 book_id : %d\n", Book1.book_id);
+   return 0;
+}
+
+Book 1 title : C Programming
+Book 1 author : Nuha Ali
+Book 1 subject : C Programming Tutorial
+Book 1 book_id : 6495407
+
+--------------------------------
+Structures as Function Arguments
+--------------------------------
+#include <stdio.h>
+#include <string.h>
+ 
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+
+/* function declaration */
+void printBook( struct Books book );
+
+int main( ) {
+
+   struct Books Book1;        /* Declare Book1 of type Book */
+    
+   /* book 1 specification */
+   strcpy( Book1.title, "C Programming");
+   strcpy( Book1.author, "Nuha Ali"); 
+   strcpy( Book1.subject, "C Programming Tutorial");
+   Book1.book_id = 6495407;
+ 
+   /* print Book1 info */
+   printBook( Book1 );
+
+   return 0;
+}
+
+void printBook( struct Books book ) {
+
+   printf( "Book title : %s\n", book.title);
+   printf( "Book author : %s\n", book.author);
+   printf( "Book subject : %s\n", book.subject);
+   printf( "Book book_id : %d\n", book.book_id);
+}
+
+-----------------------
+Pointers to Structures
+-----------------------
+Ex: struct Books *struct_pointer;
+struct_pointer = &Book1;
+struct_pointer->title;
+-----------------------
+
+#include <stdio.h>
+#include <string.h>
+ 
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+
+/* function declaration */
+void printBook( struct Books *book );
+int main( ) {
+
+   struct Books Book1;        /* Declare Book1 of type Book */
+ 
+   /* book 1 specification */
+   strcpy( Book1.title, "C Programming");
+   strcpy( Book1.author, "Nuha Ali"); 
+   strcpy( Book1.subject, "C Programming Tutorial");
+   Book1.book_id = 6495407;
+ 
+   /* print Book1 info by passing address of Book1 */
+   printBook( &Book1 );
+   return 0;
+}
+
+void printBook( struct Books *book ) {
+   printf( "Book title : %s\n", book->title);
+   printf( "Book author : %s\n", book->author);
+   printf( "Book subject : %s\n", book->subject);
+   printf( "Book book_id : %d\n", book->book_id);
+}
+Book title : C Programming
+Book author : Nuha Ali
+Book subject : C Programming Tutorial
+Book book_id : 6495407
+
+----------------------------------------		
+
+1. Interface is a contract , in interface we define a method without a body.
+
+2. If you provide implementation for the method defined in interface then you impelements that interface implicitly  in Go Lang . You don't have to define implements implicitly in GoLang.
+[struct (object) will said to implement the interface]
+
+A good example of interface struct and composition can be found at
+
+https://github.com/GoesToEleven/ArdanGoTrain/blob/master/11_composition
+
+//in the above url watch carefully
+w := world{
+		buildings: []building{
+			&house{&location{10, 10, 10}, "123 mocking bird", "white"},
+			&house{&location{10, 20, 10}, "127 mocking bird", "red"},
+		},
+		clouds: []cloud{
+			&cumulus{&location{10, 15, 1000}, 123456.4332},
+		},
+		people: []person{
+			&policeman{&location{15, 40, 10}, "Harry", true},
+		},
+	}
+
+-------------------
+Structure in GoLang
+-------------------
+package main
+import "fmt"
+
+type person struct {
+	first string
+	last string
+	age int
+}
+func main() {
+	p1:= person{"barinder", "singh", 30}
+	or
+	p2:= person{first:"barinder",last:"singh",age:30}
+	fmt.Println(p1.first, p1.last, p1.age)
+	fmt.Println(p2.first, p2.last, p2.age)
+}
+
+----------------------------------------------------------------
+type employee struct {
+	name   string
+	age    int
+	salary int
+}
+func main() {
+	emp1 := employee{"bari", 30, 20000}   //emp1 is storing the value of employee
+	emp2 := &employee{"jazz", 29, 20000}  //emp2 is storing the address of employee so emp2 is of type pointer
+	fmt.Printf("%T %T\n", emp1, emp2)
+	fmt.Println(emp1.name, " ", emp2.name)
+}
+o/p -
+main.employee *main.employee
+bari   jazz
+---------------------------------------------------------------
+func printvalue(emp employee) {      //copying emp as a value
+	emp.name = "bhai"
+	fmt.Println(emp.name)
+}
+
+func main() {
+
+	emp1 := employee{"bari", 30, 20000}
+	emp2 := &employee{"jazz", 29, 20000}
+	printvalue(emp1)
+	fmt.Printf("%T %T\n", emp1, emp2)
+
+	fmt.Println(emp1.name, " ", emp2.name)
+
+}
+
+-------------------------------
+Nesting of structure in GoLang
+-------------------------------
+------------
+First Option
+------------
+type Configuration struct {
+    Val string
+    Proxy
+}
+
+type Proxy struct {
+    Address string
+    Port    string
+}
+
+func main() {
+
+    c := &Configuration{
+        Val: "test",
+        Proxy: Proxy{
+            Address: "addr",
+            Port:    "port",
+        },
+    }
+    fmt.Println(c)
+}
+-------------
+Second Option
+-------------
+type Configuration struct {
+        Val string
+        Proxy
+}
+
+type Proxy struct {
+        Address string
+        Port    string
+}
+
+func main() {
+        c := &Configuration{"test", Proxy{"addr", "port"}}
+        fmt.Println(c)
+}
+
+
+or
+
+package main
+
+import (
+	"fmt"
+)
+
+type Configuration struct {
+	Val string
+	*Proxy
+}
+
+type Proxy struct {
+	Address string
+	Port    string
+}
+
+func main() {
+	c := &Configuration{"test", &Proxy{"addr", "port"}}
+	fmt.Println(c.Val)
+	fmt.Println(c.Proxy.Address)
+	fmt.Println(c.Proxy.Port)
+}
+
+
+-----------------------------------------------------
+MyExample of Returning Structure and pointer to structure
+
+First File
+----------
+package employees
+
+type employee struct {
+	Empname string
+	Empid   int
+	Dept    *department
+}
+
+type department struct {
+	FK_empid int
+	Vdept    string
+}
+
+func GetEmployee() employee {
+	return employee{"bari", 1, &department{1, "dmpd"}}
+}
+
+func PointerGetEmployee() *employee {
+	return &employee{"bari", 1, &department{1, "dmpd"}}
+}
+
+Second File
+-----------
+package main
+
+import (
+	"fmt"
+	"github.com/basingh/repo/employees"
+)
+
+func main() {
+	emp := employees.GetEmployee()
+	fmt.Println(emp.Empname, " ", emp.Empid, " ", emp.Dept.FK_empid, " ", emp.Dept.Vdept)
+
+	emp1 := employees.PointerGetEmployee()
+	fmt.Println(emp1.Empname, " ", emp1.Empid, " ", emp1.Dept.FK_empid, " ", emp1.Dept.Vdept)
+}
+
+o/p-
+bari   1   1   dmpd
+bari   1   1   dmpd
+
+-----------------------------------------------------
+Acccessing structure from different package in GoLang
+----------------------------------------------------- 
+Example:
+package animals
+
+type otherProps{
+  Name string
+  Width int
+}
+
+type Duck{
+  Weight int
+  otherProps
+}
+------
+package main
+
+import "github.com/someone/animals"
+
+func main(){
+  var duck animals.Duck
+  // Can't instantiate a duck with something.Duck{Weight: 2, Name: "Henry"} because `Name` is part of the private type `otherProps`
+  duck.Weight = 2
+  duck.Width = 30
+  duck.Name = "Henry"
+}
+------------
+
+---------------------------------------------
+Importing a struct that is in another package
+---------------------------------------------
+package main
+
+  import (
+      "list"
+  )
+
+  func main() {
+      lst := list.NewList(false)         
+      lst.Insert(5)
+      lst.Insert(7)
+      lst.InsertAt(2, 1)
+      lst.PrintList()
+  }
+  type LinkedList struct {
+    head    *node
+    size    int
+    isFixed bool
+ }
+ 
+-----
+type SomeType struct {
+    lst *list.LinkedList
+}
+---------------------------------
+
+package samplepkg
+
+import (
+    "fmt"
+)
+
+type Sample struct {
+    Name string
+}
+
+func New(name string) (sample * Sample) {
+    return &Sample{
+        Name: name,
+    }
+}
+
+func (sample * Sample) Print() {
+    fmt.Println("Sample Name:", sample.Name)
+}
+
+---------------------------------------
+-------------
+Good Example
+-------------
+
+car/car.go
+
+package car
+
+import "fmt"
+
+type BaseCar struct {
+    Doors  int // by default, 4 doors. SportsCar will have 2 doors
+    Wheels int
+}
+
+func NewBaseCar() BaseCar {
+    return BaseCar{Wheels: 4, Doors: 4}
+}
+
+// this will be used later to show that a "subclass" can call methods from self.BaseCar
+func (c *BaseCar) String() string {
+    return fmt.Sprintf("BaseCar: %d doors, %d wheels", c.Doors, c.Wheels)
+}
+
+// this will be promoted and not redefined
+func (c *BaseCar) CountDoors() int {
+    return c.Doors
+}
+-----------
+sportscar/sportscar.go
+
+package sportscar
+package sportscar
+
+// You can think of SportsCar as a subclass of BaseCar. But go does
+// not have conventional inheritence, and you can paint yourself into
+// a corner if you try to force square c++ structures into round go holes.
+
+import ( "../car" ; "fmt" )
+
+type SportsCar struct {
+    car.BaseCar // here is the anonymous field
+    isTopDown   bool
+}
+
+func NewSportsCar() SportsCar {
+    conv := SportsCar{} // conv.Wheels == 0
+
+    conv.BaseCar = car.NewBaseCar() // now conv.Wheels == conv.Doors == 4
+
+    conv.isTopDown = false // SportsCar-only field
+    conv.Doors = 2         // Fewer Doors than BaseCar
+    return conv
+}
+
+// SportsCar only method
+func (s *SportsCar) ToggleTop() {
+    s.isTopDown = !s.isTopDown
+}
+
+// "overloaded" string method note that to access the "base" String() method, 
+// you need to do so through the anonymous field: s.BaseCar.String()
+func (s *SportsCar) String() string {
+    return fmt.Sprintf("Sports%s, topdown: %t", s.BaseCar.String(), s.isTopDown)
+}
+
+--------------
+main.go
+
+package main
+
+import ( "./car" ; "./sportscar" ; "fmt")
+
+type Stringer interface { // added this complication to show
+    String() string // that each car calls its own String() method
+}
+
+func main() {
+    boring := car.NewBaseCar()
+    fancy := sportscar.NewSportsCar()
+
+    fmt.Printf("      %s\n", Stringer(&boring))
+    fmt.Printf("%s\n", Stringer(&fancy))
+    fancy.ToggleTop()
+    fmt.Printf("%s\n", Stringer(&fancy))
+
+    fmt.Println("BaseCar.CountDoors() method is callable from a SportsCar:", fancy.CountDoors())
+}
+
+-----------------------------
+
+Embedded Types
+---------------
+A struct's fields usually represent the has-a relationship. For example a Circle has a radius. Suppose we had a person struct:
+
+type Person struct {
+  Name string
+}
+func (p *Person) Talk() {
+  fmt.Println("Hi, my name is", p.Name)
+}
+And we wanted to create a new Android struct. We could do this:
+
+type Android struct {
+  Person Person
+  Model string
+}
+This would work, but we would rather say an Android is a Person, rather than an Android has a Person. Go supports relationships like this by using an embedded type. Also known as anonymous fields, embedded types look like this:
+
+type Android struct {
+  Person
+  Model string
+}
+We use the type (Person) and don't give it a name. When defined this way the Person struct can be accessed using the type name:
+
+a := new(Android)
+a.Person.Talk()
+But we can also call any Person methods directly on the Android:
+
+a := new(Android)
+a.Talk()
+The is-a relationship works this way intuitively: People can talk, an android is a person, therefore an android can talk.

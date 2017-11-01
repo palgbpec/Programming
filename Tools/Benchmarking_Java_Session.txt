@@ -1,0 +1,56 @@
+likwid
+
+instruction reordering
+
+
+mpstat -P ALL
+
+mstat -P ALL 2
+
+perf tool
+vmstat
+solaris analyser
+
+div and lock
+
+mod -> mask
+
+
+Performance is impacted by these
+Memory 
+lock
+
+
+
+Profilers
+1. Perf(built with the kernel)		
+2. Solaris Analyser for pin pointing the problem
+
+3. Benchmarking tool   (Java Micro Benchmarking  Harness)  openjdk  JMH 
+
+
+4. Concurrency testing stress testing  (Java concurrency stress) jcs
+
+perf recore -e pagefault
+context-switches
+
+
+5 Best tracer java -> system call -> os call -> hardware call
+system tap
+
+6. and for solaris 
+
+vmstat 2  stats
+
+formula for calculating the number fo threads
+
+N(threads) = N(cpus)*U(cpus) *(1+w/c)    w-wait, number of cpus
+
+jmx
+
+int number0fcpus = Runtime.getRuntime().availableProcessors();
+
+
+
+
+

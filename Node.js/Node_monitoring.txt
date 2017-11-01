@@ -1,0 +1,4 @@
+nohup node operamonitoring.js >> /export/home/basingh/monitoring/monitoring.log 2>&1 < /dev/null &
+
+
+nohup node operastatusserver.js >> /export/home/basingh/operastatus/operastatuspage.log 2>&1 < /dev/null &

@@ -1,0 +1,50 @@
+http://guzalexander.com/2013/12/06/golang-channels-tutorial.html
+
+func main() {
+     // Create a channel to synchronize goroutines
+     done := make(chan bool)
+
+     // Execute println in goroutine
+     go func() {
+          println("goroutine message")
+
+          // Tell the main function everything is done.
+          // This channel is visible inside this goroutine because
+          // it is executed in the same address space.
+          done <- true
+     }()
+
+     println("main function message")
+     <-done // Wait for the goroutine to finish
+}
+
+----------------------------------
+1. If we didn’t close it we’d block on a 3rd receive in the loop.
+2. Also it’s possible to close a non-empty channel but still have the remaining values be received.
+
+package main
+
+import(
+	"fmt"
+	
+) 
+
+func main() {
+     queue := make(chan int) // no buffer
+     count := 3
+
+     go func() {
+          for i := 1; i <= count; i++ {
+            queue <- i
+          }
+           close(queue)   //see the difference by commenting the line of code. as the below (for range loop) will wait 
+
+     }()
+
+     for val := range queue {
+        fmt.Println(val)
+
+
+    }
+    
+}

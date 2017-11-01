@@ -1,0 +1,11 @@
+
+1. Checking Zookeeper Status
+
+echo stat | nc <zookeeper ip> 2181
+echo mntr | nc <zookeeper ip> 2181
+echo isro  | nc <zookeeper ip> 2181
+
+$ /usr/lib/zookeeper/bin/zkServer.sh status
+JMX enabled by default
+Using config: /usr/lib/zookeeper/bin/../conf/zoo.cfg
+Mode: follower

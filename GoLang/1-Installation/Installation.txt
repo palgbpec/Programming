@@ -1,0 +1,99 @@
+For Windows
+-----------
+1. Install go1.6.3.windows-amd64.msi and Sublime Text 3
+
+2. Set the Environment variable
+	GOROOT  C:\Go\
+
+3. Now that you have setup your environment setup you can install some tools.
+
+	go get -u golang.org/x/tools/cmd/goimports
+	go get -u golang.org/x/tools/cmd/vet
+	go get -u golang.org/x/tools/cmd/oracle
+	go get -u golang.org/x/tools/cmd/godoc
+	go get -u github.com/golang/lint/golint
+	
+	(What go get does is clone the golint repo and places the source code inside the Go workspace. It also builds the code and installs the golint binary inside the newly created bin folder inside the Go workspace.)
+	
+	Then install package control in your Sublime editor and add the following plugins.
+
+	GoSublime
+	GoOracle
+
+4. The easiest way to install Packages in Sublime is to use Package Control
+
+5. Installing Package Control
+
+6. ctr+`   (open console in sublime)
+
+7. copy the below python code in the console (refer this link https://packagecontrol.io/installation)
+import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+
+8. This code creates the installed Packages folder
+Example in my case created a folder (C:\Users\basingh\AppData\Roaming\Sublime Text 3\Packages)
+
+9. ctrl+shift+p and start typing Package Control: Install Package then press return or click on that option to activate it. You will be presented with a new Quick Panel with the list of available packages.
+ Type Go Build and press return or on its entry to install SublimeGoBuild. If there is no entry for SublimeGoBuild, you most likely already have it installed.
+
+ Install GoSublime Package through Package Control
+	ctrl+shift+P
+	Package Control:GoSublime
+	Package Control:GoOracle
+(check the installed packages by browsing to Preferences -> Browse Packages)
+
+10. Update your GoSublime user Configuration by opening Preferences -> Package Settings -> GoSublime -> Settings User which should open your GoSublime.sublime-settings file
+
+Below is my settings
+
+{
+	// you may set specific environment variables here
+	// e.g "env": { "PATH": "$HOME/go/bin:$PATH" }
+	// in values, $PATH and ${PATH} are replaced with
+	// the corresponding environment(PATH) variable, if it exists.
+	"env": {"GOPATH": "C:\\dev\\workspace\\GoProject", "PATH": "C:\\dev\\workspace\\GoProject\\bin;%PATH%" },
+
+  "fmt_cmd": ["goimports"],
+
+	// enable comp-lint, this will effectively disable the live linter
+	"comp_lint_enabled": true,
+
+	// list of commands to run
+	"comp_lint_commands": [
+	   // run `golint` on all files in the package
+	   // "shell":true is required in order to run the command through your shell (to expand `*.go`)
+	   // also see: the documentation for the `shell` setting in the default settings file ctrl+dot,ctrl+4
+	   {"cmd": ["golint *.go"], "shell": true},
+
+	   // run go vet on the package
+	   {"cmd": ["go", "vet"]},
+
+	   // run `go install` on the package. GOBIN is set,
+	   // so `main` packages shouldn't result in the installation of a binary
+	   {"cmd": ["go", "install"]}
+	],
+
+	"on_save": [
+	   // run comp-lint when you save,
+	   // naturally, you can also bind this command `gs_comp_lint`
+	   // to a key binding if you want
+	   {"cmd": "gs_comp_lint"}
+	]
+}
+
+11. Also set Global Sublime Text Settings
+Preferences
+Package Settings
+Golang Config
+Settings - User
+
+{
+    "PATH": "C:\\dev\\workspace\\GoProject\\bin",
+    "GOPATH": "C:\\dev\\workspace\\GoProject"
+}
+--------------------
+https://www.goinggo.net/2016/05/installing-go-and-your-workspace.html
+--------------------
+https://github.com/golang/sublime-build/blob/master/docs/configuration.md
+--------------------
+ 
+	

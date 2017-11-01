@@ -1,0 +1,5 @@
+1. https://golang.org/pkg/fmt  (pkg)
+
+   https://golang.org/src/fmt	(src)
+
+2. https://gobyexample.com/maps

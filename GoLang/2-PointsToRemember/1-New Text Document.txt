@@ -1,0 +1,38 @@
+1. There should always be one main.go file
+
+2. In this main.go file you need to declare package "main"  even though you don't have main folder
+
+GoProject
+		  src-->github.com-->basingh-->GolangTraining-->composition-->composition.go  
+																					
+																						 package composition1
+																						 import "fmt"
+																						 func SayHello() {
+																						    fmt.Println("hello")
+																						 }
+
+		  src-->github.com-->basingh-->GolangTraining-->main-->main.go
+																			package main
+																			import (
+																				"fmt"
+																				"github.com/basingh/Golangtraining-repo1/composition"
+																			)
+
+																			func main() {
+																				composition1.SayHello()
+																			}
+																			
+3. if variable name and function starts with small letter then it can be accessed in another package.
+Even variables declared inside structure has to start with capital letter in order to be access in another package
+But the structure name can be small
+Ex:
+type employee struct {		//small letter work
+	Empname string			//variable name has to be capital
+	Empid   int				//capital
+	Dept    *department    //capital
+}
+
+type department struct {   //small
+	FK_empid int			//capital
+	Vdept    string			//capital
+}

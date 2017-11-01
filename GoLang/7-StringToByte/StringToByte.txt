@@ -1,0 +1,4 @@
+
+
+bytearr := []byte("test")
+str := string([]byte {'a','b'})
